@@ -11,6 +11,7 @@
           <li
             v-for="(menuItem, i) in menuItems"
             :key="i"
+            data-test="main-nav-list-item"
             class="h-full ml-9 first:ml-0"
           >
             <a href="" class="flex items-center h-full py-2 5">{{
