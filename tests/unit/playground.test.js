@@ -1,4 +1,4 @@
-import { evenOrOdd } from "@/playground";
+import { evenOrOdd, multiply } from "@/playground";
 
 describe("basic math", () => {
   it("add two numbers", () => {
@@ -21,5 +21,11 @@ describe("basic math", () => {
         expect(evenOrOdd(5)).toBe("Odd");
       });
     });
+  });
+});
+
+describe("multiply", () => {
+  it("multiplies two numbers together", () => {
+    expect(multiply(2, 3)).toBe(6);
   });
 });
