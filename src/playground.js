@@ -22,3 +22,7 @@
 // developer.doubleSalary();
 
 // console.log(developer);
+
+export const evenOrOdd = (number) => {
+  return number % 2 === 0 ? "Even" : "Odd";
+};
