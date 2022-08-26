@@ -13,9 +13,7 @@ describe("MainNav", () => {
     const navigationMenuItems = wrapper.findAll(
       "[data-test='main-nav-list-item']"
     );
-
     const navigationMenuTexts = navigationMenuItems.map((item) => item.text());
-    // console.log(navigationMenuTexts);
     expect(navigationMenuTexts).toEqual([
       "Teams",
       "Locations",
@@ -28,33 +26,22 @@ describe("MainNav", () => {
 
   describe("when user is logged out", () => {
     it("prompts user to sign in", () => {
-      const wrapper = mount(MainNav, {
-        data() {
-          return {
-            isLoggedIn: false,
-          };
-        },
-      });
-
+      const wrapper = mount(MainNav);
       const loginButton = wrapper.find("[data-test='login-button']");
-      const profileImage = wrapper.findComponent("[data-test='profile-image']");
       expect(loginButton.exists()).toBe(true);
-      expect(profileImage.exists()).toBe(false);
     });
   });
 
   describe("when user is logged in", () => {
-    it("displays user profile image", () => {
-      const wrapper = mount(MainNav, {
-        data() {
-          return {
-            isLoggedIn: true,
-          };
-        },
-      });
+    it("displays user profile image", async () => {
+      const wrapper = mount(MainNav);
+      let profileImage = wrapper.findComponent("[data-test='profile-image']");
+      expect(profileImage.exists()).toBe(false);
 
       const loginButton = wrapper.findComponent("[data-test='login-button']");
-      const profileImage = wrapper.findComponent("[data-test='profile-image']");
+      await loginButton.trigger("click");
+
+      profileImage = wrapper.findComponent("[data-test='profile-image']");
       expect(loginButton.exists()).toBe(false);
       expect(profileImage.exists()).toBe(true);
     });
