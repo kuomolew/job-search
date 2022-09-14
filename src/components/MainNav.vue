@@ -25,7 +25,6 @@
         <action-button
           v-else
           :text="loginText"
-          type="secondary"
           data-test="login-button"
           @click="loginUser"
         />
